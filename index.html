@@ -6,143 +6,36 @@
 	</title>
     <meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="Semantic/semantic.min.css">
+    <script src="Semantic/jquery-3.3.1.min.js"></script>
 	<script src="Semantic/semantic.min.js"></script>
     <script src="echarts.min.js"></script>
 
 </head>
 <body>
-    <div class="ui vertical stripe quote segment">
-    <div class="ui equal width stackable internally celled grid">
-        <div class="center aligned row">
-        <div class="three blue ui buttons" style="height: 50px">
-          <button class="ui icon button" onclick="window.location.href='/semantic_project1/index.html'">
-              <i class="big home icon" >MainPage</i>
-              </button>
-          <button class="ui button">logs</button>
-          <button class="ui button">other</button>
-        </div>
-      </div>
-        <div class="center aligned row">
-            <div class="column ">
-                <h1>
-                    爬虫框架图
-                </h1>
-            </div>
-        </div>
-        <div class="center aligned row">
-            <div class="container" id="chart1" style="height: 600px;width: 100%" ></div>
-            <script type="text/javascript">
-                 var myChart = echarts.init(document.getElementById('chart1'));
-
-        // 指定图表的配置项和数据
-                 var dataAxis = ['点', '击', '柱', '子', '或', '者', '两', '指', '在', '触', '屏', '上', '滑', '动', '能', '够', '自', '动', '缩', '放'];
-                var data = [220, 182, 191, 234, 290, 330, 310, 123, 500, 321, 90, 149, 210, 122, 133, 334, 198, 123, 125, 220];
-                var yMax = 500;
-                var dataShadow = [];
-
-                for (var i = 0; i < data.length; i++) {
-                    dataShadow.push(yMax);
-                }
-
-                option = {
-    title: {
-        text: '每日数据量',
-        subtext: ''
-    },
-    xAxis: {
-        data: dataAxis,
-        axisLabel: {
-            inside: true,
-            textStyle: {
-                color: '#fff'
-            }
-        },
-        axisTick: {
-            show: false
-        },
-        axisLine: {
-            show: false
-        },
-        z: 10
-    },
-    yAxis: {
-        axisLine: {
-            show: false
-        },
-        axisTick: {
-            show: false
-        },
-        axisLabel: {
-            textStyle: {
-                color: '#999'
-            }
-        }
-    },
-    dataZoom: [
-        {
-            type: 'inside'
-        }
-    ],
-    series: [
-        { // For shadow
-            type: 'bar',
-            itemStyle: {
-                normal: {color: 'rgba(0,0,0,0.05)'}
-            },
-            barGap:'-100%',
-            barCategoryGap:'40%',
-            data: dataShadow,
-            animation: false
-        },
-        {
-            type: 'bar',
-            itemStyle: {
-                normal: {
-                    color: new echarts.graphic.LinearGradient(
-                        0, 0, 0, 1,
-                        [
-                            {offset: 0, color: '#83bff6'},
-                            {offset: 0.5, color: '#188df0'},
-                            {offset: 1, color: '#188df0'}
-                        ]
-                    )
-                },
-                emphasis: {
-                    color: new echarts.graphic.LinearGradient(
-                        0, 0, 0, 1,
-                        [
-                            {offset: 0, color: '#2378f7'},
-                            {offset: 0.7, color: '#2378f7'},
-                            {offset: 1, color: '#83bff6'}
-                        ]
-                    )
-                }
-            },
-            data: data
-        }
-    ]
-};
-
-// Enable data zoom when user click bar.
-                var zoomSize = 6;
-                // myChart.on('click', function (params) {
-                //     console.log(dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)]);
-                //     myChart.dispatchAction({
-                //         type: 'dataZoom',
-                //         startValue: dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)],
-                //         endValue: dataAxis[Math.min(params.dataIndex + zoomSize / 2, data.length - 1)]
-                //     });
-                // });
-
-
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-
-            </script>
-        </div>
-
-    </div>
+    <body>
+  <div class="ui sidebar inverted vertical menu">
+    <a class="item">
+      1
+    </a>
+    <a class="item">
+      2
+    </a>
+    <a class="item">
+      3
+    </a>
   </div>
-
+  <div class="pusher">
+    <!-- Site content !-->
+      <button class="ui button blue" id="showall">bianlan</button>
+  </div>
+</body>
+<script>
+    $('.ui.button.blue').click(function () {
+           $('.ui.sidebar').sidebar('toggle');
+//         $('.ui.sidebar')
+//   .sidebar('toggle')
+// ;
+    });
+</script>
 </body>
 </html>
