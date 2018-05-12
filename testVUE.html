@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>testvue</title>
+	    <meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="Semantic/semantic.min.css">
+	<script src="Semantic/semantic.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="echarts.min.js"></script>
+    <style type="text/css">
+    	.completed{
+    		text-decoration: line-through;
+    	}
+    </style>
+</head>
+<body>
+	<div id="app">
+		<task-app :list="tasks">
+			
+		</task-app>
+		<!-- 模板的好处就是，将来在其它地方需要这个模板吗，直接将task-app这部分直接复制过去就行，如果想换一些data，将list中的内容换一下就可以，比如list="[{body:'learn app',completed:false}]" -->
+		
+		<template id="task-template">
+			<ul>
+				<li 
+					@click="toggleTasks(task)"
+					:class="{'completed':task.completed}" 
+					v-for="task in list">
+						{{ task.body}}
+					</li>
+				<!-- 如果直接写completed的话，他不知道compelted是什么东西，如果想要直接写
+				，用'completed'来写。就是记住加双引号；或者咋data字中声明completed是什么东西 -->
+			</ul>
+		</template>	
+	</div>
+	
+	
+	<script type="text/javascript">
+		
+		Vue.component('task-app',{
+			template:'#task-template',
+			props:['list'],
+			methods:{
+				toggleTasks:function(task){
+					task.completed+=1;
+				}
+			}
+
+
+		});
+
+
+		new Vue({
+			el:'#app',
+			data:{
+				tasks:[
+				 {body:'go to the moive',completed:0},
+				 {body:'learn vue js in action',completed:1},
+				 {body:'go to the shop',completed:0}
+				]
+			},
+			methods:{
+				toggleTasks:function(task){
+					task.completed+=1;
+				}
+			}
+		})
+	</script>
+
+
+</body>
+</html>
